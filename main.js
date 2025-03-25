@@ -15,8 +15,8 @@ document.body.appendChild(renderer.domElement);
 const radius = 1;
 const upperHeight = 2;
 const lowerHeight = 1;
-const segments = 32;
-const tiltAngle = Math.PI / 10; // 15 degrees tilt to the left
+const segments = 4; // Using 4 segments creates a square-based pyramid
+const tiltAngle = Math.PI / 8; // tilt to the left
 
 // Define missing variables needed for capture functionality
 let animating = false;
@@ -35,10 +35,10 @@ const envMap = cubeTextureLoader.load([
 ]);
 scene.environment = envMap;
 
-// Create upper cone with red stainless steel material
+// Create upper pyramid with red stainless steel material
 const upperConeGeometry = new THREE.ConeGeometry(radius, upperHeight, segments);
 const redSteelMaterial = new THREE.MeshStandardMaterial({
-    color: 0xcc1414,         // Bright red color
+    color: 0xB49CFF,         // Bright red color
     metalness: 0.9,          // High metalness for steel look
     roughness: 0.2,          // Low roughness for polished appearance
     envMap: envMap,          // Environment map for reflections
@@ -48,7 +48,7 @@ const upperCone = new THREE.Mesh(upperConeGeometry, redSteelMaterial);
 // Position upper cone so its base is at y=0
 upperCone.position.y = upperHeight / 2;
 
-// Create lower cone (inverted) with same material
+// Create lower pyramid (inverted) with same material
 const lowerConeGeometry = new THREE.ConeGeometry(radius, lowerHeight, segments);
 const lowerCone = new THREE.Mesh(lowerConeGeometry, redSteelMaterial);
 lowerCone.rotation.x = Math.PI; // Rotate 180 degrees to invert
@@ -158,8 +158,8 @@ function captureMultipleFrames() {
     currentFrame = 0;
 
     // Reset cursor rotation to initial state
-    cursor.rotation.y = 0;
-    captureCursorContainer.children[0].rotation.y = 0;
+    // cursor.rotation.y = 0;
+    // captureCursorContainer.children[0].rotation.y = 0;
 
     captureFrame();
 }
@@ -173,8 +173,13 @@ function captureFrame() {
     }
 
     // Rotate cursor by an appropriate amount for each frame
-    const rotationAmount = (currentFrame / totalFrames) * Math.PI * 2;
-    captureCursorContainer.children[0].rotation.y = rotationAmount;
+    // const rotationAmount = (currentFrame / totalFrames) * Math.PI * 2;
+    
+    // // Apply rotation to main cursor for reference
+    // cursor.rotation.y = rotationAmount;
+    
+    // // Directly copy all rotation values from main cursor to capture cursor
+    captureCursorContainer.children[0].rotation.copy(cursor.rotation);
 
     // Capture the current frame
     captureCursor();
@@ -190,6 +195,7 @@ function captureFrame() {
 function animate() {
     requestAnimationFrame(animate);
     renderer.render(scene, camera);
+    cursor.rotateY(0.01); // Rotate cursor around Y-axis
 }
 
 // Handle window resize
@@ -219,9 +225,10 @@ instructions.style.padding = "10px";
 instructions.style.backgroundColor = "rgba(255, 255, 255, 0.7)";
 instructions.style.borderRadius = "5px";
 instructions.innerHTML = `
-    <h3>Cursor Capture Tool</h3>
-    <p>Press <b>S</b> to capture current frame</p>
-    <p>Press <b>A</b> to capture 36 frames for animation</p>
+    <h3>Pyramid Cursor Capture Tool</h3>
+    <p>Press <b>S</b> to capture a single frame</p>
+    <p>Press <b>A</b> to capture ${totalFrames} frames for animation</p>
+    <p><small>For a standard cursor, 36 frames provides a smooth animation.</small></p>
 `;
 document.body.appendChild(instructions);
 
