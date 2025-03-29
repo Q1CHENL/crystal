@@ -14,49 +14,56 @@ A stunning spinning mouse cursor for your GNOME desktop. Vibe coded in threejs.
 
 4. Create file `crystal.config` in it with the following content:
 
-<details>
-<summary>Click to expand configuration content</summary>
+   <details>
+   <summary>Click to expand config content and explaination</summary>
 
-```bash
-32 9 2 cursor_00.png 150
-32 9 2 cursor_01.png 150
-32 9 2 cursor_02.png 150
-32 9 2 cursor_03.png 150
-32 9 2 cursor_04.png 150
-32 9 2 cursor_05.png 150
-32 9 2 cursor_06.png 150
-32 9 2 cursor_07.png 150
-32 9 2 cursor_08.png 150
-32 9 2 cursor_09.png 150
-32 9 2 cursor_10.png 150
-32 9 2 cursor_11.png 150
-32 9 2 cursor_12.png 150
-32 9 2 cursor_13.png 150
-32 9 2 cursor_14.png 150
-32 9 2 cursor_15.png 150
-32 9 2 cursor_16.png 150
-32 9 2 cursor_17.png 150
-32 9 2 cursor_18.png 150
-32 9 2 cursor_19.png 150
-32 9 2 cursor_20.png 150
-32 9 2 cursor_21.png 150
-32 9 2 cursor_22.png 150
-32 9 2 cursor_23.png 150
-32 9 2 cursor_24.png 150
-32 9 2 cursor_25.png 150
-32 9 2 cursor_26.png 150
-32 9 2 cursor_27.png 150
-32 9 2 cursor_28.png 150
-32 9 2 cursor_29.png 150
-32 9 2 cursor_30.png 150
-32 9 2 cursor_31.png 150
-32 9 2 cursor_32.png 150
-32 9 2 cursor_33.png 150
-32 9 2 cursor_34.png 150
-32 9 2 cursor_35.png 150
-```
+   ```bash
+   32 9 2 cursor_00.png 150
+   32 9 2 cursor_01.png 150
+   32 9 2 cursor_02.png 150
+   32 9 2 cursor_03.png 150
+   32 9 2 cursor_04.png 150
+   32 9 2 cursor_05.png 150
+   32 9 2 cursor_06.png 150
+   32 9 2 cursor_07.png 150
+   32 9 2 cursor_08.png 150
+   32 9 2 cursor_09.png 150
+   32 9 2 cursor_10.png 150
+   32 9 2 cursor_11.png 150
+   32 9 2 cursor_12.png 150
+   32 9 2 cursor_13.png 150
+   32 9 2 cursor_14.png 150
+   32 9 2 cursor_15.png 150
+   32 9 2 cursor_16.png 150
+   32 9 2 cursor_17.png 150
+   32 9 2 cursor_18.png 150
+   32 9 2 cursor_19.png 150
+   32 9 2 cursor_20.png 150
+   32 9 2 cursor_21.png 150
+   32 9 2 cursor_22.png 150
+   32 9 2 cursor_23.png 150
+   32 9 2 cursor_24.png 150
+   32 9 2 cursor_25.png 150
+   32 9 2 cursor_26.png 150
+   32 9 2 cursor_27.png 150
+   32 9 2 cursor_28.png 150
+   32 9 2 cursor_29.png 150
+   32 9 2 cursor_30.png 150
+   32 9 2 cursor_31.png 150
+   32 9 2 cursor_32.png 150
+   32 9 2 cursor_33.png 150
+   32 9 2 cursor_34.png 150
+   32 9 2 cursor_35.png 150
+   ```
 
-</details>
+   Explaination of `32 9 2 cursor_35.png 150`
+
+   - `32`: the size of the cursor image in pixels (32x32)
+   - `9 2`: x and y position of the hotspot (the point that clicks)
+   - `cursor_xx.png` - name of the image file
+   - `150` - time in milliseconds to show the image
+
+   </details>
 
 5. Run `xcursorgen crystal.config left_ptr` to generate cursor file
    (Install `xcursorgen` if you don't have it already)
