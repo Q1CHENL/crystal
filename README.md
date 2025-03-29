@@ -1,6 +1,6 @@
 # Crystal
 
-A stunning spinning mouse cursor for your GNOME desktop. Vibe coded in threejs.
+A stunning spinning mouse cursor for your GNOME desktop. Vibe coded in [threejs](https://threejs.org/)
 
 ![demo](assets/demo.gif)
 
